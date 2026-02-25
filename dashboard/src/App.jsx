@@ -237,7 +237,7 @@ function App() {
       <header className="header">
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
           <img src="/logo.png" alt="Logo" style={{ width: '40px', height: '40px' }} />
-          <h1 style={{ color: '#3b82f6' }}>HOOK Dashboard</h1>
+          <h1 style={{ color: '#3b82f6' }}>oiforever Dashboard</h1>
         </div>
         <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
           <Activity size={20} className="status-active" />

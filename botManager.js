@@ -73,10 +73,14 @@ class BotManager {
     try {
       await client.login(token);
 
-      client.user.setActivity(config.BOT_STATUS_TEXT, {
-        type: ActivityType.Streaming,
-        url: config.STREAMING_URL
-      });
+      const rawType = String(config.BOT_STATUS_TYPE || 'STREAMING').toUpperCase();
+      const type = ActivityType[rawType] ?? ActivityType.Streaming;
+      const activityPayload = { type };
+      if (type === ActivityType.Streaming) {
+        activityPayload.url = config.STREAMING_URL;
+      }
+
+      client.user.setActivity(config.BOT_STATUS_TEXT, activityPayload);
 
       this.clients.set(token, client);
       const inviteLink = `https://discord.com/api/oauth2/authorize?client_id=${client.user.id}&permissions=8&scope=bot%20applications.commands`;
